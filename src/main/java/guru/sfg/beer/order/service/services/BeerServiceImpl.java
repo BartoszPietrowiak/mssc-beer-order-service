@@ -1,6 +1,6 @@
 package guru.sfg.beer.order.service.services;
 
-import guru.sfg.beer.order.service.web.model.BeerDto;
+import guru.sfg.common.BeerDto;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;

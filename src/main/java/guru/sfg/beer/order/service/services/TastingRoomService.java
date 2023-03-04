@@ -1,11 +1,12 @@
 package guru.sfg.beer.order.service.services;
 
-import guru.sfg.beer.order.service.bootstrap.BeerOrderBootStrap;
+
 import guru.sfg.beer.order.service.domain.Customer;
-import guru.sfg.beer.order.service.repositories.BeerOrderRepository;
 import guru.sfg.beer.order.service.repositories.CustomerRepository;
-import guru.sfg.beer.order.service.web.model.BeerOrderDto;
-import guru.sfg.beer.order.service.web.model.BeerOrderLineDto;
+import guru.sfg.beer.order.service.bootstrap.BeerOrderBootStrap;
+import guru.sfg.beer.order.service.repositories.BeerOrderRepository;
+import guru.sfg.common.BeerOrderDto;
+import guru.sfg.common.BeerOrderLineDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -38,11 +39,11 @@ public class TastingRoomService {
 
     @Transactional
     @Scheduled(fixedRate = 2000) //run every 2 seconds
-    public void placeTastingRoomOrder(){
+    public void placeTastingRoomOrder() {
 
         List<Customer> customerList = customerRepository.findAllByCustomerNameLike(BeerOrderBootStrap.TASTING_ROOM);
 
-        if (customerList.size() == 1){ //should be just one
+        if (customerList.size() == 1) { //should be just one
             doPlaceOrder(customerList.get(0));
         } else {
             log.error("Too many or too few tasting room customers found");
@@ -71,6 +72,6 @@ public class TastingRoomService {
     }
 
     private String getRandomBeerUpc() {
-        return beerUpcs.get(new Random().nextInt(beerUpcs.size() -0));
+        return beerUpcs.get(new Random().nextInt(beerUpcs.size() - 0));
     }
 }
