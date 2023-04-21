@@ -15,8 +15,16 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package guru.sfg.beer.order.service.domain;
+package guru.sfg.beer.order.service.web.mappers;
 
-public enum BeerOrderStatusEnum {
-    NEW,PENDING_VALIDATION, VALIDATED,VALIDATION_EXCEPTION,PENDING_ALLOCATION, ALLOCATED, ALLOCATION_EXCEPTION, PENDING_INVENTORY, PICKED_UP, DELIVERED, DELIVERY_EXCEPTION, CANCELED
+import guru.sfg.beer.order.service.domain.Customer;
+import guru.sfg.common.CustomerDto;
+import org.mapstruct.Mapper;
+
+@Mapper(uses = {DateMapper.class})
+public interface CustomerMapper {
+
+    CustomerDto customerToDto(Customer customer);
+
+    Customer dtoToCustomer(CustomerDto dto);
 }

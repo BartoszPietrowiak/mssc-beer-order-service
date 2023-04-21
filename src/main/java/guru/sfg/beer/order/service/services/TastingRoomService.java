@@ -1,10 +1,10 @@
 package guru.sfg.beer.order.service.services;
 
 
-import guru.sfg.beer.order.service.domain.Customer;
-import guru.sfg.beer.order.service.repositories.CustomerRepository;
 import guru.sfg.beer.order.service.bootstrap.BeerOrderBootStrap;
+import guru.sfg.beer.order.service.domain.Customer;
 import guru.sfg.beer.order.service.repositories.BeerOrderRepository;
+import guru.sfg.beer.order.service.repositories.CustomerRepository;
 import guru.sfg.common.BeerOrderDto;
 import guru.sfg.common.BeerOrderLineDto;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +38,7 @@ public class TastingRoomService {
     }
 
     @Transactional
-    @Scheduled(fixedRate = 2000) //run every 2 seconds
+    @Scheduled(fixedRate = 10000) //run every 10 seconds
     public void placeTastingRoomOrder() {
 
         List<Customer> customerList = customerRepository.findAllByCustomerNameLike(BeerOrderBootStrap.TASTING_ROOM);

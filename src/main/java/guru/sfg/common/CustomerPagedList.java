@@ -15,8 +15,19 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package guru.sfg.beer.order.service.domain;
+package guru.sfg.common;
 
-public enum BeerOrderStatusEnum {
-    NEW,PENDING_VALIDATION, VALIDATED,VALIDATION_EXCEPTION,PENDING_ALLOCATION, ALLOCATED, ALLOCATION_EXCEPTION, PENDING_INVENTORY, PICKED_UP, DELIVERED, DELIVERY_EXCEPTION, CANCELED
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+
+import java.util.List;
+
+public class CustomerPagedList extends PageImpl<CustomerDto> {
+    public CustomerPagedList(List<CustomerDto> content, Pageable pageable, long total) {
+        super(content, pageable, total);
+    }
+
+    public CustomerPagedList(List<CustomerDto> content) {
+        super(content);
+    }
 }
